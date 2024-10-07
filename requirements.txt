@@ -1,0 +1,4 @@
+django
+google-generativeai
+markdown
+imghdr
