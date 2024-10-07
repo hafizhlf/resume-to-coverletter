@@ -30,6 +30,11 @@ ALLOWED_HOSTS = [
     os.environ["HOST"],
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://'+os.environ["HOST"],
+    'http://'+os.environ["HOST"],
+]
+
 
 # Application definition
 
