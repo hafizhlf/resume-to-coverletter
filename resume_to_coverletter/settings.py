@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'auth_custom',
     'coverletter',
 ]
 
@@ -88,7 +89,7 @@ WSGI_APPLICATION = 'resume_to_coverletter.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'database/db.sqlite3',
     }
 }
 

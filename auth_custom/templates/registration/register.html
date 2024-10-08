@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="sunset">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - LetterCraft</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-base-200 flex items-center justify-center">
+    <!-- Register Card -->
+    <div class="card w-full max-w-sm shadow-xl bg-base-100">
+        <div class="card-body">
+            <!-- Title -->
+            <h2 class="card-title text-center mb-4">Create an Account</h2>
+
+            {% if form.errors %}
+                <p style="color: red;">{{ form.errors }}</p>
+            {% endif %}
+
+            <!-- Register Form -->
+            <form method="post" action="{% url 'register' %}" class="form-control">
+                {% csrf_token %}
+
+                <!-- Name Input -->
+                <label for="name" class="label">
+                    <span class="label-text">Full Name</span>
+                </label>
+                <input type="text" name="name" id="name" placeholder="Enter your full name"
+                    class="input input-bordered w-full" aria-label="Full Name" required />
+
+                <!-- Email Input -->
+                <label for="email" class="label mt-4">
+                    <span class="label-text">Email</span>
+                </label>
+                <input type="email" name="email" id="email" placeholder="Enter your email"
+                    class="input input-bordered w-full" aria-label="Email" required />
+
+                <!-- Password Input -->
+                <label for="password" class="label mt-4">
+                    <span class="label-text">Password</span>
+                </label>
+                <input type="password" name="password" id="password" placeholder="Enter your password"
+                    class="input input-bordered w-full" aria-label="Password" required />
+
+                <!-- Confirm Password Input -->
+                <label for="confirm_password" class="label mt-4">
+                    <span class="label-text">Confirm Password</span>
+                </label>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password"
+                    class="input input-bordered w-full" aria-label="Confirm Password" required />
+
+                <!-- Register Button -->
+                <button type="submit" class="btn btn-primary w-full mt-6">Create Account</button>
+            </form>
+
+            <!-- Login Link -->
+            <p class="text-center text-sm mt-4">Already have an account? <a href="{% url 'login' %}"
+                    class="link link-secondary">Login</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
