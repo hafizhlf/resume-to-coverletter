@@ -17,7 +17,7 @@ def index(request: HttpRequest):
         resume = request.FILES['resume'].read()
         open_position = request.FILES['open_position'].read()
         try:
-            cover_letter = generate_cover_letter(resume, open_position)
+            cover_letter = generate_cover_letter(resume, open_position, request.POST.get('language', 'Bahasa Indonesia'))
         except Exception as e:
             cover_letter = f"An error occurred: {e}"
 
@@ -50,13 +50,13 @@ def _upload_open_position(open_position: bytes):
 
     return uploaded_open_position, temp_file_path
 
-def generate_cover_letter(resume: bytes, open_position: bytes) -> str:
+def generate_cover_letter(resume: bytes, open_position: bytes, language: str) -> str:
     try:
         pdf_resume, pdf_resume_path = _upload_resume(resume)
         open_position, open_position_path = _upload_open_position(open_position)
 
-        prompt = '''
-Imagine you're scrolling through Instagram and come across an intriguing job posting that aligns perfectly with your career aspirations. Craft a professional email to the HR department expressing your enthusiasm and detailing how your skills, as outlined in your resume, make you an ideal candidate for this role. Consider how you can articulate your unique strengths without referring to details that aren't explicitly provided in the job listing and resume. How will you ensure that your message stands out among potential applicants? Don't explain anything about your response.
+        prompt = f'''
+Imagine you're scrolling through Instagram and come across an intriguing job posting that aligns perfectly with your career aspirations. Craft a professional email to the HR department expressing your enthusiasm and detailing how your skills, as outlined in your resume, make you an ideal candidate for this role. Consider how you can articulate your unique strengths without referring to details that aren't explicitly provided in the job listing and resume. Also, make sure your language in {language} to mirrors the tone and language of the job listing. How will you ensure that your message stands out among potential applicants? Don't explain your response.
 '''
 
         response = model.generate_content([prompt, pdf_resume, open_position])

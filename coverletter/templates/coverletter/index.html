@@ -38,8 +38,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
-                            <span>Your uploaded files are deleted immediately after processing. We prioritize your
-                                privacy. <a
+                            <span>Your files are deleted immediately after processing. Your privacy is our top priority. <a
                                     href="https://github.com/hafizhlf/resume-to-coverletter/blob/main/coverletter/views.py#L64-L68"
                                     class="link" aria-label="Privacy policy details">Learn more</a></span>
                         </div>
@@ -51,7 +50,7 @@
                         
                         <!-- Resume File Upload -->
                         <label for="pdf" class="label">
-                            <span class="label-text">Choose your resume (PDF)</span>
+                            <span class="label-text">Upload your resume (PDF)</span>
                         </label>
                         <input type="file" name="resume" accept=".pdf"
                             class="file-input file-input-bordered w-full" id="pdf" aria-label="Resume PDF file"
@@ -65,6 +64,15 @@
                             class="file-input file-input-bordered w-full" id="photo" aria-label="Position image"
                             required />
                         
+                        <!-- Language Selection -->
+                        <label for="language" class="label mt-4">
+                            <span class="label-text">Select Language</span>
+                        </label>
+                        <select class="select select-bordered w-full" id="language" name="language">
+                            <option>Bahasa Indonesia</option>
+                            <option>English</option>
+                        </select>
+
                         <!-- Generate Button -->
                         <button type="submit" class="btn btn-primary mt-6 w-full">Generate Cover Letter</button>
                     </form>
@@ -75,7 +83,7 @@
             {% if cover_letter %}
             <div class="card bg-base-100 shadow-xl mb-8">
                 <div class="card-body">
-                    <h3 class="card-title mb-4">Generated Cover Letter</h3>
+                    <h3 class="card-title mb-4">Your Generated Cover Letter</h3>
                     <div>{{ cover_letter | safe | linebreaks }}</div>
                 </div>
             </div>
