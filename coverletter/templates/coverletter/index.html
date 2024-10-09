@@ -86,7 +86,7 @@
                         </select>
 
                         <!-- Generate Button -->
-                        <button type="submit" class="btn btn-primary mt-6 w-full">Generate Cover Letter</button>
+                        <button type="submit" id="submit" class="btn btn-primary mt-6 w-full">Generate Cover Letter</button>
                     </form>
                 </div>
             </div>
@@ -116,10 +116,12 @@
         // Listen for the HTMX events to show/hide the loading spinner
         document.body.addEventListener('htmx:beforeRequest', function() {
             document.getElementById('loading').classList.add('loading');
+            document.getElementById('submit').disabled = true;
         });
 
         document.body.addEventListener('htmx:afterRequest', function() {
             document.getElementById('loading').classList.remove('loading');
+            document.getElementById('submit').disabled = false;
         });
     </script>
 </body>
