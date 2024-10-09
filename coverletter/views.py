@@ -69,7 +69,7 @@ Imagine you're scrolling through Instagram and come across an intriguing job pos
         open_position.delete()
 
         prompt = f'''
-Please format this in markdown
+Format this in Markdown
 
 {response.text}
 '''
