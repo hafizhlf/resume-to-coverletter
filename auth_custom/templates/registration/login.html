@@ -52,6 +52,11 @@
                 <!-- Sign Up Link -->
                 <p class="text-center text-sm mt-4">Don't have an account? <a href="{% url 'register' %}"
                         class="link link-secondary" hx-get="{% url 'register' %}" hx-target="body" hx-swap="outerHTML" hx-push-url="true">Sign up</a></p>
+
+                <!-- Back to Home Button -->
+                <div class="text-center mt-4">
+                    <a href="{% url 'index' %}" hx-get="{% url 'index' %}" hx-target="body" hx-swap="outerHTML" hx-push-url="true" class="btn btn-outline">Back to Home</a>
+                </div>
             </div>
         </div>
     </div>
