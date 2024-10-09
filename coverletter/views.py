@@ -2,9 +2,7 @@ import os
 import tempfile
 import imghdr
 import markdown
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
+from django.shortcuts import render
 from django.http import HttpRequest
 import google.generativeai as genai
 
@@ -12,6 +10,9 @@ genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 model = genai.GenerativeModel("gemini-1.5-flash-002")
 
 def index(request: HttpRequest):
+    return render(request, 'coverletter/index.html')
+
+def coverletter(request: HttpRequest):
     cover_letter = None
     if request.method == 'POST':
         resume = request.FILES['resume'].read()
@@ -24,7 +25,7 @@ def index(request: HttpRequest):
     if cover_letter:
         cover_letter = markdown.markdown(cover_letter)
 
-    return render(request, 'coverletter/index.html', {'cover_letter': cover_letter})
+    return render(request, 'coverletter/coverletter.html', {'cover_letter': cover_letter})
 
 def _upload_resume(resume: bytes):
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:

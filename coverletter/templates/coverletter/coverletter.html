@@ -1,0 +1,9 @@
+<!-- Generated Cover Letter Display -->
+{% if cover_letter %}
+<div class="card bg-base-100 shadow-xl mb-8">
+    <div class="card-body">
+        <h3 class="card-title mb-4">Your Generated Cover Letter</h3>
+        <div>{{ cover_letter | safe | linebreaks }}</div>
+    </div>
+</div>
+{% endif %}
