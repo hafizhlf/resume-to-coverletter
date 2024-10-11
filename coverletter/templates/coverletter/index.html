@@ -30,11 +30,12 @@
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal px-1">
-                    <li><a href="{% url 'login' %}" hx-get="{% url 'login' %}" hx-target="body" hx-swap="outerHTML" hx-push-url="true" aria-label="Login page">Login</a></li>
+                    <li><a href="{% url 'login' %}" hx-get="{% url 'login' %}" hx-target="body" hx-swap="outerHTML"
+                            hx-push-url="true" aria-label="Login page">Login</a></li>
                 </ul>
             </div>
         </nav>
-    
+
         <!-- Main Content -->
         <main class="container mx-auto p-4 mt-4">
             <section class="max-w-xl mx-auto">
@@ -42,7 +43,7 @@
                 <div class="card bg-base-100 shadow-xl mb-8">
                     <div class="card-body">
                         <h2 class="card-title mb-4">Upload Your Resume</h2>
-    
+
                         <!-- Privacy Alert -->
                         <div class="alert alert-info shadow-lg mb-6">
                             <div>
@@ -51,24 +52,25 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
-                                <span>Your files are deleted immediately after processing. Your privacy is our top priority. <a
-                                        href="https://github.com/hafizhlf/resume-to-coverletter/blob/main/coverletter/views.py#L65-L69"
+                                <span>Your files are deleted immediately after processing. Your privacy is our top
+                                    priority. <a
+                                        href="https://github.com/hafizhlf/resume-to-coverletter/blob/main/coverletter/views.py#L56-L58"
                                         class="link" aria-label="Privacy policy details">Learn more</a></span>
                             </div>
                         </div>
-    
+
                         <!-- File Upload Form -->
-                        <form method="post" hx-post="{% url 'coverletter' %}" hx-target="#response" hx-swap="innerHTML transition:true" enctype="multipart/form-data" class="form-control">
+                        <form method="post" hx-post="{% url 'coverletter' %}" hx-target="#response"
+                            hx-swap="innerHTML transition:true" enctype="multipart/form-data" class="form-control">
                             {% csrf_token %}
-                            
+
                             <!-- Resume File Upload -->
                             <label for="pdf" class="label">
                                 <span class="label-text">Upload your resume (PDF)</span>
                             </label>
-                            <input type="file" name="resume" accept=".pdf"
-                                class="file-input file-input-bordered w-full" id="pdf" aria-label="Resume PDF file"
-                                required />
-                            
+                            <input type="file" name="resume" accept=".pdf" class="file-input file-input-bordered w-full"
+                                id="pdf" aria-label="Resume PDF file" required />
+
                             <!-- Job Position Image Upload -->
                             <label for="photo" class="label mt-4">
                                 <span class="label-text">Upload the job position image</span>
@@ -76,7 +78,7 @@
                             <input type="file" name="open_position" accept="image/*"
                                 class="file-input file-input-bordered w-full" id="photo" aria-label="Position image"
                                 required />
-                            
+
                             <!-- Language Selection -->
                             <label for="language" class="label mt-4">
                                 <span class="label-text">Select Language</span>
@@ -85,27 +87,31 @@
                                 <option>Bahasa Indonesia</option>
                                 <option>English</option>
                             </select>
-    
+
                             <!-- Generate Button -->
-                            <button type="submit" id="submit" class="btn btn-primary mt-6 w-full">Generate Cover Letter</button>
+                            <button type="submit" id="submit" class="btn btn-primary mt-6 w-full">Generate Cover
+                                Letter</button>
                         </form>
                     </div>
                 </div>
-    
+
                 <!-- Loading animation -->
                 <div class="mx-auto text-center mb-8">
                     <div id="loading" class="spinner">
                         <i class="fas fa-spinner fa-spin"></i>
                     </div>
                 </div>
-    
+
                 <div id="response"></div>
             </section>
-    
+
             <!-- Footer Section -->
             <footer class="text-center mt-12">
                 <p>LetterCraft is an Open Source project</p>
-                <p class="mt-2">Licensed under the <a href="https://github.com/hafizhlf/resume-to-coverletter/blob/main/LICENSE" class="link link-secondary" target="_blank" rel="noopener noreferrer">GNU General Public License v3.0</a>.</p>
+                <p class="mt-2">Licensed under the <a
+                        href="https://github.com/hafizhlf/resume-to-coverletter/blob/main/LICENSE"
+                        class="link link-secondary" target="_blank" rel="noopener noreferrer">GNU General Public License
+                        v3.0</a>.</p>
                 <p class="mt-2">Contributions and feedback are welcome!</p>
                 <div class="mt-4">
                     <a href="https://github.com/hafizhlf/resume-to-coverletter" target="_blank"
@@ -116,12 +122,12 @@
     </div>
     <script>
         // Listen for the HTMX events to show/hide the loading spinner
-        document.body.addEventListener('htmx:beforeRequest', function() {
+        document.body.addEventListener('htmx:beforeRequest', function () {
             document.getElementById('loading').classList.add('loading');
             document.getElementById('submit').disabled = true;
         });
 
-        document.body.addEventListener('htmx:afterRequest', function() {
+        document.body.addEventListener('htmx:afterRequest', function () {
             document.getElementById('loading').classList.remove('loading');
             document.getElementById('submit').disabled = false;
         });

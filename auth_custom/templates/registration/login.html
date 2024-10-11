@@ -17,45 +17,47 @@
             <div class="card-body">
                 <!-- Title -->
                 <h2 class="card-title text-center mb-4">Login to LetterCraft</h2>
-    
+
                 {% if form.errors %}
-                    <p style="color: red;">{{ form.errors }}</p>
+                <p style="color: red;">{{ form.errors }}</p>
                 {% endif %}
-    
+
                 <!-- Login Form -->
                 <form method="post" action="{% url 'login' %}" class="form-control">
                     {% csrf_token %}
-    
+
                     <!-- Email Input -->
                     <label for="email" class="label">
                         <span class="label-text">Email</span>
                     </label>
                     <input type="email" name="email" id="email" placeholder="Enter your email"
                         class="input input-bordered w-full" aria-label="Email" required />
-    
+
                     <!-- Password Input -->
                     <label for="password" class="label mt-4">
                         <span class="label-text">Password</span>
                     </label>
                     <input type="password" name="password" id="password" placeholder="Enter your password"
                         class="input input-bordered w-full" aria-label="Password" required />
-    
+
                     <!-- Forgot Password -->
                     <div class="text-right mt-2">
                         <a href="#" class="link link-primary text-sm">Forgot password?</a>
                     </div>
-    
+
                     <!-- Login Button -->
                     <button type="submit" class="btn btn-primary w-full mt-6">Login</button>
                 </form>
-    
+
                 <!-- Sign Up Link -->
                 <p class="text-center text-sm mt-4">Don't have an account? <a href="{% url 'register' %}"
-                        class="link link-secondary" hx-get="{% url 'register' %}" hx-target="body" hx-swap="outerHTML" hx-push-url="true">Sign up</a></p>
+                        class="link link-secondary" hx-get="{% url 'register' %}" hx-target="body" hx-swap="outerHTML"
+                        hx-push-url="true">Sign up</a></p>
 
                 <!-- Back to Home Button -->
                 <div class="text-center mt-4">
-                    <a href="{% url 'index' %}" hx-get="{% url 'index' %}" hx-target="body" hx-swap="outerHTML" hx-push-url="true" class="btn btn-outline">Back to Home</a>
+                    <a href="{% url 'index' %}" hx-get="{% url 'index' %}" hx-target="body" hx-swap="outerHTML"
+                        hx-push-url="true" class="btn btn-outline">Back to Home</a>
                 </div>
             </div>
         </div>
