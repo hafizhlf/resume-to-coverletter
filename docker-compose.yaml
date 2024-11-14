@@ -1,0 +1,12 @@
+services:
+  lettercraft:
+    environment:
+    - HOST=
+    - DJANGO_SECRET_KEY=
+    - GEMINI_API_KEY=
+    - DEBUG_MODE=False
+    build: .
+    container_name: lettercraft
+    ports:
+      - "8000:8000"
+    restart: unless-stopped

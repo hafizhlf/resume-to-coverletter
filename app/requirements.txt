@@ -1,0 +1,5 @@
+Django==5.1.3
+google-generativeai
+markdown
+python-dotenv
+standard-imghdr
